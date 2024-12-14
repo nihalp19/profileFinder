@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { MapAPikey } from "../Apikey";
+import {  MAP_API_KEY } from "../Apikey";
 
 const getCoordinatesFromCity = async (city) => {
-    const apiKey = MapAPikey;
+    const apiKey = MAP_API_KEY;
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=${apiKey}`;
 
     const response = await fetch(url);
@@ -19,7 +19,7 @@ const getCoordinatesFromCity = async (city) => {
 };
 
 const getAddressFromLatLng = async (latitude, longitude) => {
-    const apiKey = MapAPikey;
+    const apiKey = MAP_API_KEY;
     console.log("apikey", apiKey);
 
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
@@ -34,7 +34,7 @@ const getAddressFromLatLng = async (latitude, longitude) => {
     }
 };
 
-const MapWithCity = ({ city }) => {
+export const MapWithCity = ({ city }) => {
     const [coordinates, setCoordinates] = useState(null);
     const mapRef = useRef(null);
 
@@ -73,4 +73,4 @@ const MapWithCity = ({ city }) => {
     return <div id="map" style={{ height: "300px", width: "80%" }}></div>;
 };
 
-export default MapWithCity;
+

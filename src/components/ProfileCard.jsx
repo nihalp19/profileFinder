@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Navbar from './Navbar'
-import MapWithAddress from '../MapApi/Map'
-import avatar from "../assets/pexels-mart-production-7606016.jpg"
+import { MapWithCity } from '../MapApi/Map'
 import { useSelector } from 'react-redux'
 function ProfileCard() {
     const profiles = useSelector(state => state.profiles.profiles)
@@ -28,7 +27,7 @@ function ProfileCard() {
                     </div>
                     {showMap && (
                         <div className='relative mt-2'>
-                            <MapWithAddress city={profile.address} />
+                            <MapWithCity city={profile.address} />
                         </div>
                     )
                     }
